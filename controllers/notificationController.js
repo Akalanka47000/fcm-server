@@ -4,15 +4,15 @@ exports.sendNotification = async (req, res) => {
 
   const { title, body, device_tokens } = req.body;
 
-  if (!title) res.status(400).json({ error: "A message title is required" });
+  if (!title) return res.status(400).json({ error: "A message title is required" });
 
-  if (!body) res.status(400).json({ error: "A message body is required" });
+  if (!body) return res.status(400).json({ error: "A message body is required" });
 
   if (!device_tokens)
-    res.status(400).json({ error: "A set of device tokens are required" });
+    return res.status(400).json({ error: "A set of device tokens are required" });
 
   if (!Array.isArray(device_tokens))
-    res.status(400).json({ error: "Property device_tokens must be of type array" });
+    return res.status(400).json({ error: "Property device_tokens must be of type array" });
 
   const payload = {
     notification: {
@@ -39,9 +39,9 @@ exports.sendNotification = async (req, res) => {
   );
 
   if (errors.length === 0) {
-    res.status(200).json({ message: "Message broadcasted successfully" });
+    return res.status(200).json({ message: "Message broadcasted successfully" });
   } else {
-    res.status(500).json({ errors: errors });
+    return res.status(500).json({ errors: errors });
   }
 
 };
