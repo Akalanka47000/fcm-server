@@ -11,7 +11,10 @@ router.post("/send", celebrate({ [Segments.BODY]: sendSchema }), async (req, res
         .messaging()
         .send({
           token: token,
-          notification: { title: req.body.title, body: req.body.body }
+          notification: { title: req.body.title, body: req.body.body },
+          android: {
+            priority: req.body.priority ?? "normal",
+          }
         })
         .catch((error) => errors.push(error));
     })

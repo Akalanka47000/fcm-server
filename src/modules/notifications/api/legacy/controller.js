@@ -7,7 +7,7 @@ router.post("/send", celebrate({ [Segments.BODY]: sendSchema }), async (req, res
   const payload = {
     notification: { title: req.body.title, body: req.body.body }
   };
-  const options = { priority: "normal", timeToLive: 60 * 60 };
+  const options = { priority: req.body.priority ?? "normal", timeToLive: 60 * 60 };
   let errors = [];
   await Promise.all(
     req.body.device_tokens.map(async (token) => {
