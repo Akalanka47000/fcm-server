@@ -2,21 +2,24 @@
   "name": "fcm-server",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "ENV=production node server",
-    "dev": "nodemon server"
+    "start": "ENV=production node src/index.js",
+    "dev": "nodemon src/index.js",
+    "format": "prettier .  --write --cache"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.0",
-    "express": "^4.17.1",
-    "firebase-admin": "^5.0.0"
+    "celebrate": "15.0.1",
+    "cors": "2.8.5",
+    "express": "4.17.1",
+    "firebase-admin": "11.9.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "dotenv": "16.0.0",
+    "nodemon": "2.0.15",
+    "prettier": "2.8.8"
   }
 }
